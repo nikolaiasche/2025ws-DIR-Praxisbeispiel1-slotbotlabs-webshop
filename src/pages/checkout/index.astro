@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const plan = Astro.url.searchParams.get("plan") ?? "standard";
+---
+<BaseLayout title={`Checkout (Mock) – ${plan}`}>
+  <h1>Checkout (Mock)</h1>
+  <p>Ausgewählter Plan: <strong>{plan}</strong></p>
+  <p>Platzhalter – hier kommt später Zahlungsabwicklung / Formular rein.</p>
+</BaseLayout>

@@ -1,16 +1,321 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const BASE_URL = import.meta.env.BASE_URL;
+const baseNoTrailing =
+  BASE_URL.endsWith("/") && BASE_URL !== "/" ? BASE_URL.slice(0, -1) : BASE_URL;
+const withBase = (path) => {
+  if (!path) return BASE_URL;
+  if (path.startsWith("#")) return path;
+  if (path.startsWith("/")) return `${baseNoTrailing}${path}` || path;
+  return `${BASE_URL}${path}`;
+};
+
+const plans = [
+  {
+    id: "standard",
+    name: "Standard",
+    price: "4,99 € / Monat",
+    tagline: "Für den stressfreien Alltag.",
+    features: [
+      "Automatische Anmeldung zu LVAs/Prüfungen",
+      "1 Universität / Account",
+      "Erinnerungen & Status-Notifications",
+      "Basis-Regelset (Zeitfenster, Gruppen, Wiederholungen)",
+    ],
+    primaryCta: { label: "Standard wählen", href: "/checkout?plan=standard" },
+    secondaryCta: { label: "Details", href: "/abo/standard" },
+    highlight: false,
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    price: "9,99 € / Monat",
+    tagline: "Maximale Chance bei knappen Slots.",
+    features: [
+      "Alles aus Standard",
+      "Mehrere Universitäten / Accounts",
+      "Prioritätsmodus für zeitkritische Anmeldungen",
+      "Kalender-Sync & erweiterte Regeln",
+      "Priority Support",
+    ],
+    primaryCta: { label: "Premium wählen", href: "/checkout?plan=premium" },
+    secondaryCta: { label: "Details", href: "/abo/premium" },
+    highlight: true,
+    badge: "Empfohlen",
+  },
+];
+
+const title = "SlotBotBuddy – Dein Slot, automatisch gesichert";
+const description =
+  "SlotBotBuddy unterstützt dich bei zeitkritischen Anmeldungen zu Lehrveranstaltungen und Prüfungen – mit erlaubter Automatisierung über offizielle Schnittstellen.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description} showFooter={true}>
+  <section class="hero">
+    <div class="heroLeft">
+      <h1>Dein Slot, automatisch gesichert.</h1>
+      <p class="sub">
+        SlotBotBuddy unterstützt dich bei zeitkritischen Anmeldungen zu
+        Lehrveranstaltungen und Prüfungen — mit erlaubter Automatisierung über
+        offizielle, öffentlich zugängliche Schnittstellen.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href={withBase("/checkout?plan=premium")}
+          >Premium starten</a
+        >
+        <a class="btn" href={withBase("/abo")}>Abo ansehen</a>
+      </div>
+    </div>
+
+    <div class="miniPanel" aria-label="Kurzinfo">
+      <div class="miniTitle">In 30 Sekunden startklar</div>
+      <ul class="miniList">
+        <li>Plan wählen</li>
+        <li>LVAs/Prüfungen konfigurieren</li>
+        <li>Automatisierung aktivieren</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="abo" class="abo">
+    <div class="sectionHead">
+      <h2>Abomodelle</h2>
+      <p class="muted">Minimal, übersichtlich, jederzeit kündbar.</p>
+    </div>
+
+    <div class="grid">
+      {
+        plans.map((p) => (
+          <article
+            class={"card" + (p.highlight ? " highlight" : "")}
+            aria-labelledby={`plan-${p.id}`}
+          >
+            <div class="planRow">
+              <h3 id={`plan-${p.id}`}>{p.name}</h3>
+              {p.badge ? <span class="badge">{p.badge}</span> : null}
+            </div>
+
+            <div class="price">{p.price}</div>
+            <div class="tagline">{p.tagline}</div>
+
+            <ul class="features">
+              {p.features.map((f) => (
+                <li>
+                  <span class="dot" aria-hidden="true" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="cardCtas">
+              <a
+                class={"btn" + (p.highlight ? " success" : " primary")}
+                href={withBase(p.primaryCta.href)}
+              >
+                {p.primaryCta.label}
+              </a>
+              <a class="btn" href={withBase(p.secondaryCta.href)}>
+                {p.secondaryCta.label}
+              </a>
+            </div>
+
+            <p class="fine">
+              Hinweis: SlotBotBuddy nutzt keine Fremdzugriffe auf Uni-Systeme
+              und arbeitet nur im Rahmen erlaubter Automatisierung.
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 12px;
+      align-items: stretch;
+      padding: 6px 0 6px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.04;
+      letter-spacing: -0.4px;
+    }
+    .sub {
+      margin: 0 0 8px;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 14px;
+    }
+
+    .ctaRow {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .miniPanel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(17, 24, 39, 0.6);
+      box-shadow: var(--shadow);
+      padding: 10px 12px;
+    }
+    .miniTitle {
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .miniList {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .miniList li {
+      margin: 4px 0;
+    }
+
+    .abo {
+      padding: 6px 0 0;
+    }
+
+    .sectionHead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 2px 0 8px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    .muted {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(17, 24, 39, 0.55);
+      box-shadow: var(--shadow);
+      padding: 12px;
+    }
+    .card.highlight {
+      background: linear-gradient(
+        180deg,
+        rgba(34, 197, 94, 0.12),
+        rgba(17, 24, 39, 0.55)
+      );
+      border-color: rgba(34, 197, 94, 0.35);
+    }
+
+    .planRow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.55);
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--text);
+    }
+
+    .price {
+      margin-top: 6px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+    .tagline {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14px;
+      row-gap: 6px;
+      font-size: 14px;
+    }
+    .features li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      min-width: 0;
+    }
+    .dot {
+      margin-top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.35);
+      flex: 0 0 auto;
+    }
+    .card.highlight .dot {
+      background: rgba(34, 197, 94, 0.75);
+    }
+
+    .cardCtas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .fine {
+      margin: 0;
+      color: rgba(229, 231, 235, 0.72);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-height: 820px) {
+      .fine {
+        display: none;
+      }
+    }
+  </style>
+</BaseLayout>
