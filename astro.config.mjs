@@ -5,7 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  site: 'https://nikolaiasche.github.io',
+  base: '/2025ws-DIR-Praxisbeispiel1-slotbotlabs-webshop',
 });
