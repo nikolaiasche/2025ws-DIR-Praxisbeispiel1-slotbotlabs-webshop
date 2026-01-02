@@ -1,9 +1,353 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const plan = Astro.url.searchParams.get("plan") ?? "standard";
+import "../../styles/checkout.css";
+import { withBase } from "../../utils/utils";
+import checkoutScriptUrl from "../../utils/checkout.ts?url";
+
+const VAT_RATE = 0.2;
+
+const plans = {
+  standard: {
+    id: "standard",
+    name: "Standard",
+    priceCents: 499,
+    priceLabel: "4,99 € / Monat",
+    tagline: "Für den stressfreien Alltag.",
+    features: [
+      "Automatische Anmeldung zu LVAs/Prüfungen",
+      "1 Universität / Account",
+      "Erinnerungen & Status-Notifications",
+      "Basis-Regelset (Zeitfenster, Gruppen, Wiederholungen)",
+    ],
+  },
+  premium: {
+    id: "premium",
+    name: "Premium",
+    priceCents: 999,
+    priceLabel: "9,99 € / Monat",
+    tagline: "Maximale Chance bei knappen Slots.",
+    features: [
+      "Alles aus Standard",
+      "Mehrere Universitäten / Accounts",
+      "Prioritätsmodus für zeitkritische Anmeldungen",
+      "Kalender-Sync & erweiterte Regeln",
+      "Priority Support",
+    ],
+  },
+} as const;
+
+type PlanId = keyof typeof plans;      // "standard" | "premium"
+type Plan = (typeof plans)[PlanId];
+const planFromUrl = Astro.url.searchParams.get("plan");
+const selected: Plan = planFromUrl === "premium" ? plans.premium : plans.standard;
+const fmt = new Intl.NumberFormat("de-AT", { style: "currency", currency: "EUR" });
+const gross = selected.priceCents / 100;
+const net = Math.round((gross / (1 + VAT_RATE)) * 100) / 100;
+const vat = Math.round((gross - net) * 100) / 100;
+
+const title = "Mock: Checkout";
+const description =
+  "Mock: Zahlungs- und Rechnungsabwicklung (Google Pay / Apple Pay / Kreditkarte).";
 ---
-<BaseLayout title={`Checkout (Mock) – ${plan}`}>
-  <h1>Checkout (Mock)</h1>
-  <p>Ausgewählter Plan: <strong>{plan}</strong></p>
-  <p>Platzhalter – hier kommt später Zahlungsabwicklung / Formular rein.</p>
+
+<BaseLayout
+  title={title}
+  description={description}
+  showFooter={true}
+  lockPageScroll={true}
+>
+  <script
+    id="checkout-config"
+    type="application/json"
+    set:html={JSON.stringify({ vatRate: VAT_RATE, plans })}
+  ></script>
+
+  <div class="checkoutShell">
+    <section class="checkoutHeader">
+      <a class="btn" href={withBase("/#abo")} aria-label="Zurück zur Startseite">
+        ← Zurück
+      </a>
+
+      <div class="checkoutHeadText">
+        <h1>Checkout</h1>
+        <p class="muted">
+          Mock: Es wird keine echte Zahlung durchgeführt und keine Daten an Zahlungsanbieter gesendet.
+        </p>
+      </div>
+    </section>
+
+    <div class="checkoutGrid" id="checkoutGrid">
+      <form
+        id="checkoutForm"
+        class="panel form"
+        novalidate
+        data-plan-name={selected.name}
+        data-plan-id={selected.id}
+        data-plan-price-cents={selected.priceCents}
+        data-vat-rate={VAT_RATE}
+      >
+        <div class="panelHead">
+          <h2>Rechnungsdaten</h2>
+          <p class="muted small">Pflichtfelder sind mit * markiert.</p>
+        </div>
+
+        <div class="formScroll">
+          <div class="fieldsGrid">
+            <div class="field">
+              <label for="firstName">Vorname *</label>
+              <input id="firstName" name="firstName" autocomplete="given-name" required />
+              <p class="hint">So wie auf der Rechnung.</p>
+            </div>
+
+            <div class="field">
+              <label for="lastName">Nachname *</label>
+              <input id="lastName" name="lastName" autocomplete="family-name" required />
+            </div>
+
+            <div class="field span2">
+              <label for="email">E-Mail-Adresse *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <p class="hint">Mock: Wir senden die Rechnung an diese Adresse.</p>
+            </div>
+
+            <div class="field span2">
+              <label for="address">Straße & Hausnr. *</label>
+              <input id="address" name="address" autocomplete="street-address" required />
+            </div>
+
+            <div class="field">
+              <label for="zip">PLZ *</label>
+              <input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required />
+            </div>
+
+            <div class="field">
+              <label for="city">Ort *</label>
+              <input id="city" name="city" autocomplete="address-level2" required />
+            </div>
+
+            <div class="field span2">
+              <label for="country">Land *</label>
+              <select id="country" name="country" autocomplete="country-name" required>
+                <option value="">Bitte wählen</option>
+                <option value="AT" selected>Österreich</option>
+                <option value="DE">Deutschland</option>
+                <option value="CH">Schweiz</option>
+                <option value="OTHER">Sonstiges</option>
+              </select>
+            </div>
+          </div>
+
+          <hr class="sep" />
+
+          <fieldset class="payFieldset">
+            <legend class="payLegend">
+              <h2 style="margin:0">Zahlungsmethode</h2>
+              <p class="muted small" style="margin:4px 0 0">
+                Mock: Wähle eine Methode
+              </p>
+            </legend>
+
+            <div class="methodGrid" role="radiogroup" aria-label="Zahlungsmethode wählen">
+              <label class="methodOption">
+                <input type="radio" name="payMethod" value="googlepay" />
+                <span class="methodInner">
+                  <span class="methodTitle">Google Pay</span>
+                  <span class="methodMeta">Mock: Schnell & mobil</span>
+                </span>
+              </label>
+
+              <label class="methodOption">
+                <input type="radio" name="payMethod" value="applepay" />
+                <span class="methodInner">
+                  <span class="methodTitle">Apple Pay</span>
+                  <span class="methodMeta">Mock: Face/Touch ID</span>
+                </span>
+              </label>
+
+              <label class="methodOption">
+                <input type="radio" name="payMethod" value="card" checked />
+                <span class="methodInner">
+                  <span class="methodTitle">Kreditkarte</span>
+                  <span class="methodMeta">Mock: z.B. Visa </span>
+                </span>
+              </label>
+            </div>
+
+            <div id="cardFields" class="cardFields" aria-label="Kreditkartendaten">
+              <div class="fieldsGrid">
+                <div class="field span2">
+                  <label for="cardName">Name auf der Karte *</label>
+                  <input id="cardName" name="cardName" autocomplete="cc-name" />
+                </div>
+
+                <div class="field span2">
+                  <label for="cardNumber">Kartennummer *</label>
+                  <input
+                    id="cardNumber"
+                    name="cardNumber"
+                    inputmode="numeric"
+                    autocomplete="cc-number"
+                    placeholder="4242 4242 4242 4242"
+                    minlength="12"
+                  />
+                  <p class="hint">Mock: Jede Nummer ist ok, solange etwas eingegeben ist.</p>
+                </div>
+
+                <div class="field">
+                  <label for="cardExp">Ablauf (MM/JJ) *</label>
+                  <input id="cardExp" name="cardExp" inputmode="numeric" autocomplete="cc-exp" placeholder="12/30" />
+                </div>
+
+                <div class="field">
+                  <label for="cardCvc">CVC *</label>
+                  <input id="cardCvc" name="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" />
+                </div>
+              </div>
+            </div>
+
+            <div class="consentRow">
+              <label class="check">
+                <input id="terms" name="terms" type="checkbox" required />
+                <span>Mock: Ich akzeptiere die Bedingungen und möchte fortfahren. *</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="actions">
+          <div class="status" id="formStatus" aria-live="polite"></div>
+          <button class="btn primary" id="payBtn" type="submit">
+            Mock: Mit Kreditkarte bezahlen
+          </button>
+        </div>
+      </form>
+
+      <aside class="panel summary" aria-label="Bestellübersicht">
+        <div class="panelHead">
+          <h2>Bestellübersicht</h2>
+          <p class="muted small">Plan & Rechnung im Überblick.</p>
+        </div>
+
+        <div class="summaryScroll">
+          <div
+            id="summaryPlanBox"
+            class={"planBox" + (selected.id === "premium" ? " highlight" : "")}
+          >
+            <div class="planTop">
+              <div>
+                <div class="planName" id="summaryPlanName">{selected.name}</div>
+                <div class="muted small" id="summaryTagline">{selected.tagline}</div>
+              </div>
+              <span class="badge" id="summaryBadge" hidden={selected.id !== "premium"}>Empfohlen</span>
+            </div>
+
+            <ul class="miniFeatures" id="summaryFeatures">
+              {selected.features.map((f) => (
+                <li>
+                  <span class="dot" aria-hidden="true" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="priceBox" aria-label="Preisdetails">
+            <div class="row">
+              <span>Zwischensumme (netto)</span>
+              <strong id="summaryNet">{fmt.format(net)}</strong>
+            </div>
+            <div class="row">
+              <span>USt. (20%)</span>
+              <strong id="summaryVat">{fmt.format(vat)}</strong>
+            </div>
+            <div class="row total">
+              <span>Gesamt (brutto)</span>
+              <strong id="summaryGross">{fmt.format(gross)}</strong>
+            </div>
+
+            <p class="fine">
+              Mock: Hinweis: Monatliches Abo, jederzeit kündbar.
+            </p>
+
+            <div class="summaryCtas">
+              <a class="btn" href={withBase("/subscriptions")}>Plan ändern</a>
+            </div>
+          </div>
+
+          <div class="trustBox">
+            <div class="trustTitle">Was passiert als Nächstes?</div>
+            <ol class="trustList">
+              <li>Mock: Du bestätigst die Zahlung.</li>
+              <li>Mock: Wir erstellen eine Rechnung.</li>
+              <li>Mock: Du bekommst eine Bestätigung auf der Seite.</li>
+            </ol>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="successPanel" class="panel successPanel" hidden>
+      <div class="panelHead">
+        <h2 tabindex="-1">Mock: Zahlung erfolgreich</h2>
+        <p class="muted small">Mock: Keine echte Transaktion</p>
+      </div>
+
+      <div class="successScroll">
+        <div class="successGrid">
+          <div class="successCard">
+            <h3>Bestätigung</h3>
+            <p class="muted" style="margin-top:6px">
+              Mock: Dein <strong data-out="planName"></strong>-Abo wurde aktiviert.
+              Rechnung: <strong data-out="invoiceNo"></strong>
+            </p>
+
+            <div class="kv">
+              <div class="kvRow">
+                <span>Zahlungsmethode</span>
+                <strong data-out="methodLabel"></strong>
+              </div>
+              <div class="kvRow">
+                <span>E-Mail</span>
+                <strong data-out="email"></strong>
+              </div>
+              <div class="kvRow">
+                <span>Datum</span>
+                <strong data-out="date"></strong>
+              </div>
+            </div>
+
+            <div class="actions" style="margin-top:12px">
+              <a class="btn primary" href={withBase("/")}>Zur Startseite</a>
+              <button class="btn" id="printBtn" type="button">Mock: Rechnung drucken</button>
+            </div>
+          </div>
+
+          <div class="invoiceCard" id="invoiceCard">
+            <h3>Mock: Rechnung</h3>
+            <div class="invoiceMeta">
+              <div><span>Rechnungsnr.</span> <strong data-out="invoiceNo"></strong></div>
+              <div><span>Leistung</span> <strong>Abo <span data-out="planName"></span></strong></div>
+              <div><span>Betrag</span> <strong data-out="amountMonthly">{fmt.format(gross)} / Monat</strong></div>
+            </div>
+
+            <hr class="sep" />
+
+            <div class="invoiceTo">
+              <div class="muted small">Rechnung an</div>
+              <div class="invoiceName" data-out="fullName"></div>
+              <div class="invoiceLine" data-out="address"></div>
+              <div class="invoiceLine" data-out="zipCity"></div>
+              <div class="invoiceLine" data-out="country"></div>
+            </div>
+
+            <p class="fine" style="margin-top:10px">
+              Mock: Diese Rechnung ist nur eine Mock-Ausgabe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src={checkoutScriptUrl}></script>
 </BaseLayout>

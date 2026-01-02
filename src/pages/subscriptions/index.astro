@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../utils/utils";
+import "../styles/subscription.css";
+const title = "Abos – SlotBotBuddy";
+const description = "Wähle den passenden Plan für SlotBotBuddy.";
+
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`;
+---
+
+<BaseLayout title={title} description={description} showFooter={true}>
+  <h1>Abos</h1>
+  <p>Wähle den Plan, der am besten zu dir passt.</p>
+
+  <div class="cards">
+    <a class="card" href={withBase("/checkout?plan=standard")}>
+      <div class="cardHeader">
+        <img
+          src={asset("media/images/product/standard_abo_icon.png")}
+          alt=""
+          class="planIcon"
+          aria-hidden="true"
+        />
+        <h2>Standard</h2>
+      </div>
+      <div class="cardBody">
+        <p class="price">4,99 € / Monat</p>
+        <p>Für den stressfreien Alltag.</p>
+      </div>
+      <img
+        src={asset("media/images/product/kaufen_icon.png")}
+        alt=""
+        class="buyIcon"
+        aria-hidden="true"
+      />
+    </a>
+
+    <a class="card" href={withBase("/checkout?plan=premium")}>
+      <div class="cardHeader">
+        <img
+          src={asset("media/images/product/premium_abo_icon.png")}
+          alt=""
+          class="planIcon"
+          aria-hidden="true"
+        />
+        <h2>Premium</h2>
+      </div>
+      <div class="cardBody"></div>
+      <p class="price">9,99 € / Monat</p>
+      <p>Maximale Chance bei knappen Slots.</p>
+      <img
+        src={asset("media/images/product/kaufen_icon.png")}
+        alt=""
+        class="buyIcon"
+        aria-hidden="true"
+      />
+    </a>
+  </div>
+</BaseLayout>

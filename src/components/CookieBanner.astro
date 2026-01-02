@@ -1,0 +1,44 @@
+---
+const privacyUrl = "/privacy";
+import "../styles/cookie-banner.css";
+import { withBase } from "../utils/utils.ts";
+---
+
+<div id="cookie-banner" class="cookie-banner" hidden role="dialog" aria-modal="true" aria-labelledby="cookie-title" transition:persist="cookie-banner">
+  <div class="cookie-card">
+    <h2 id="cookie-title">Cookies & Datenschutz</h2>
+    <p>
+      Mock: Wir verwenden notwendige Cookies für die Grundfunktionen.
+      <a id="cookie-more-info" href={withBase("/privacy")}>Mehr Infos</a>
+    </p>
+
+    <div class="cookie-actions">
+      <button id="cookie-accept-all" class="btn primary" type="button">Alle akzeptieren</button>
+      <button id="cookie-reject" class="btn" type="button">Nur notwendige</button>
+      <button id="cookie-settings" class="btn" type="button">Einstellungen</button>
+    </div>
+
+    <div id="cookie-settings-panel" class="cookie-settings" hidden>
+      <label class="cookie-toggle">
+        <input type="checkbox" checked disabled />
+        Notwendig (immer aktiv)
+      </label>
+
+      <label class="cookie-toggle">
+        <input id="cookie-analytics" type="checkbox" />
+        Analytics (Mock)
+      </label>
+
+      <div class="cookie-actions">
+        <button id="cookie-save" class="btn primary" type="button">Speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initCookieConsent } from "../utils/cookies.ts";
+  initCookieConsent();
+  document.addEventListener("astro:page-load", initCookieConsent);
+</script>
+

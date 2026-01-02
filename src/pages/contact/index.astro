@@ -1,7 +1,124 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/contact.css";
 ---
-<BaseLayout title={`Contact`}>
-  <h1>Kontakt</h1>
-  <p>Platzhalter – Kontaktformular / E-Mail / Standort.</p>
+
+<BaseLayout title={"Kontakt"} lockPageScroll={true}>
+  <section class="contact-hero" aria-labelledby="kontakt-title">
+    <div class="contact-head">
+      <h1 id="kontakt-title">Kontakt</h1>
+      <p class="contact-sub">
+        Du hast Fragen zu SlotBotBuddy, Abos oder der Nutzung? Schreib uns und wir melden uns so schnell wie möglich. ;)
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <aside class="contact-card" aria-label="Kontaktinformationen">
+        <h2 class="card-title">Slot Bot Labs</h2>
+        <p class="card-text">
+          Wien, Österreich<br />
+          Support-Zeiten: Mo–Fr, 09:00–17:00
+        </p>
+
+        <div class="card-divider" role="presentation"></div>
+
+        <ul class="contact-list">
+          <li>
+            <span class="label">E-Mail</span>
+            <a class="value" href="mailto:support@slotbotlabs.at">support@slotbotlabs.at</a>
+          </li>
+          <li>
+            <span class="label">Antwortzeit</span>
+            <span class="value">i. d. R. innerhalb von 1–2 Werktagen</span>
+          </li>
+          <li>
+            <span class="label">Hinweis</span>
+            <span class="value">
+              Sämtliche Funktionalität des Kontaktformulars ist gemockt.
+            </span>
+          </li>
+        </ul>
+
+        <div class="card-actions">
+          <a class="btn" href="/subscriptions">Abos ansehen</a>
+          <a class="btn primary" href="/checkout?plan=premium">Premium starten</a>
+        </div>
+      </aside>
+
+      <section class="contact-panel" aria-label="Kontaktformular">
+        <div class="panel-head">
+          <h2 class="panel-title">Schreib uns eine Nachricht</h2>
+          <p class="panel-sub">
+            Bitte fülle die Felder aus. Nach dem Absenden simulieren wir den Versand.
+          </p>
+        </div>
+
+        <div class="panel-scroll" role="region" aria-label="Formularbereich (scrollbar)">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="row">
+              <div class="field">
+                <label for="name">Name <span aria-hidden="true">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+                <p class="hint" id="hint-name">Bitte gib deinen Namen ein.</p>
+              </div>
+
+              <div class="field">
+                <label for="email">E-Mail <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+                <p class="hint" id="hint-email">Wir nutzen diese E-Mail nur, um zu antworten.</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="topic">Thema <span aria-hidden="true">*</span></label>
+              <select id="topic" name="topic" required>
+                <option value="" selected disabled>Bitte wählen …</option>
+                <option value="product">Produkt & Nutzung</option>
+                <option value="billing">Abo & Abrechnung</option>
+                <option value="credits">Urheberrecht</option>
+                <option value="license">Lizenz</option>
+                <option value="privacy">Datenschutz</option>
+                <option value="other">Sonstiges</option>
+              </select>
+              <p class="hint">Wähle das Thema, damit wir dich schneller weiterleiten können.</p>
+            </div>
+
+            <div class="field">
+              <label for="message">Nachricht <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+              <p class="hint">Keine sensiblen Daten (z. B. Passwörter) eingeben.</p>
+            </div>
+
+            <div class="field check">
+              <input id="consent" name="consent" type="checkbox" required />
+              <label for="consent">
+                Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. <span aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button id="submitBtn" type="submit" class="btn success">
+                Nachricht senden (Mock)
+              </button>
+              <button id="resetBtn" type="reset" class="btn">
+                Zurücksetzen
+              </button>
+            </div>
+
+            <div class="status" aria-live="polite" aria-atomic="true">
+              <div id="statusBox" class="status-box" hidden>
+                <strong id="statusTitle"></strong>
+                <p id="statusText" class="status-text"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </section>
+
+<script>
+  import { initContactForm } from "../../utils/contact.ts";
+  initContactForm();
+</script>
 </BaseLayout>

@@ -1,7 +1,158 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/about.css";
+import { withBase } from "../../utils/utils";
 ---
-<BaseLayout title={`About`}>
-  <h1>Marke</h1>
-  <p>Platzhalter für Brand Story, Mission, Produktversprechen, Team.</p>
+
+<BaseLayout
+  title="Über uns – SlotBotBuddy"
+  description="Informationen zu Markenformen, Markenstrategie und Nizza-Klassenzuordnung von SlotBotBuddy."
+>
+  <section class="about-page">
+    <div class="about-shell">
+      <div class="about-scroll" tabindex="0">
+        <h1>Über uns</h1>
+        <h2>Markenformen</h2>
+        <p>
+          <strong>Wortbildmarke:</strong> Das Logo vom SlotBotBuddy, welches im Webshop
+          integriert ist.
+        </p>
+        <p>
+          <strong>Bildmarke:</strong> Das Logo vom Unternehmen, welches als Browserextension
+          und als Icon für die Mobile App verwendet wird.
+        </p>
+        <p>
+          <strong>Farbmarke:</strong> Ein konsistenter Farbverlauf, welcher als Teil
+          der Corporate Identity markenähnlich eingesetzt und durch das gesamte Unternehmensbild
+          verwendet wird. Der Farbverlauf reicht von einem dunklen Violett-Blau auf
+          der linken Seite zu einem Grün-Türkis auf der rechten Seite. Der Farbverlauf
+          dient zur Wiedererkennung.
+        </p>
+
+        <h2>Über us</h2>
+        <p>
+          SlotBotBuddy hilft österreichischen Studierenden bei der Anmeldung bei
+          Lehrveranstaltungen und Prüfungen. Unser Programm ist mit einem
+          besonderen Augenmerk auf Zuverlässigkeit, technische Präzision und ein
+          hohes Maß an Automatisierung im universitären Umfeld entwickelt. Dies
+          sind auch die Hauptpfeiler unserer Unternehmensphilosophie.
+        </p>
+        <p>
+          Ziel unserer Markenstartegie ist eine klare visuelle Differenzierung
+          und Wiedererkennbarkeit eines in sich geschlossenen Ökosystems
+          bestehend aus einem Webshop, Browsererweitung und einer mobilen
+          App, welches unsere Unternehmensmission repräsentiert.
+        </p>
+
+        <h2>Wortbildmarke - “SlotBotBuddy”</h2>
+
+        <div class="brand-figure">
+          <img
+            src={withBase("/media/images/brand/logo-slotbotbuddy.png")}
+            alt="Wortbildmarke SlotBotBuddy – Schriftzug mit Robotersymbol"
+            loading="lazy"
+          />
+          <p class="brand-caption">
+            Abbildung: Wortbildmarke „SlotBotBuddy“ (Webshop-Header).
+          </p>
+        </div>
+
+        <p>
+          Die Wortbildmarke wird für den Webauftritt im Shop verwendet, um
+          diesem eine direkt erkennbare Mission und Problemlösung zu geben. Die
+          Worte sind bewusst so gewählt um direkt die Funktionsweise des
+          Programms wiederzugeben. Die Wortwahl ist nicht beschreibend im
+          rechtlichen Sinn und besitzt genug Unterscheidungskraft. Die
+          Wortbildmarke wird direkt im Header des Webshops verwendet.
+        </p>
+
+        <h2>Bildmarke – Unternehmenslogo</h2>
+
+        <div class="brand-figure">
+          <img
+            src={withBase("/media/images/brand/logo-slotbotlabs.png")}
+            alt="Bildmarke SlotBotLabs – Robotersymbol im Reagenzglas"
+            loading="lazy"
+          />
+          <p class="brand-caption">
+            Abbildung: Bildmarke (Icon für Browser-Extension und Mobile App).
+          </p>
+        </div>
+
+        <p>
+          Die Bildmarke ist ein rein grafisches Icon ohne Text, welches als zur
+          Darstellung der Browser-Extension und der mobilen App verwendet wird.
+          Dadurch entsteht ein hohes Maß an Wiedererkennbarkeit und
+          unterscheidet sich wesentlich von der Wortbildmarke.
+        </p>
+
+        <h2>Farbmarke – Konsistenter Farbverlauf</h2>
+        <p>
+          Der Farbverlauf der Farbmarke beginnt links mit einem dunklen
+          Violett-Blau und enthält rechts teilweise Grün-Türkise Teile. Der
+          Farbverlauf wird konsistent innerhalb des Webshops und in sämtlichen
+          Marken wie der Wortbildmarke und der Bildmarke verwendet. Die Farben
+          wurden bewusst so gewählt, da sie dem Unternehmensauftritt einen
+          modernen technischen Touch geben.
+        </p>
+
+        <h2>Zuordnung Nizza-Klassen</h2>
+        <ul>
+          <li>
+            Wortbildmarke “SlotBotBuddy”: Klasse 9, Software, Computersoftware
+            für Suchmaschinen, mobile Apps
+          </li>
+          <li>
+            Wortbildmarke “SlotBotBuddy”: Klasse 42, Software-as-a-Service
+          </li>
+          <li>
+            Bildmarke (Extension-Icon): Klasse 9, Digitale Softwareprodukte
+          </li>
+          <li>
+            Farbmarke (Gradient): Klasse 9, Kennzeichnung digitaler
+            Softwareoberflächen
+          </li>
+          <li>Farbmakre (Gradient): Klasse 42, Digitale Dienstleistung</li>
+        </ul>
+
+        <h2>Prüfung - Markenrechtsverletzung</h2>
+        <p>
+          <strong>Wortwahl:</strong> Es handelt sich bei “SlotBotBuddy” um einen Fantasienamen,
+          welcher keine beschreibende Angabe noch eine Anlehnung an eine bereits existierende
+          Marke ist.
+        </p>
+        <p>
+          <strong>Bildwahl:</strong> Die Logos wurden individuell mit KI-Unterstützung
+          erstellt und anschließend geprüft, ob irgendwelche Rechte Dritter verletzt
+          oder verweise auf bekannte und geschützte Symbole existieren. Es existiert
+          keine Ähnlichkeit zu einem bestehenden Softwareprodukt.
+        </p>
+        <p>
+          <strong>Farbwahl:</strong> Die benutzten Farben bzw. Der benutzte Farbverlauf
+          entspricht keinem geschützten Farbton.
+        </p>
+        <p>
+          <strong>Positions- &amp; Formwahl:</strong> Es gibt keine Verletzung durch
+          die Positionierung der Marken oder durch die Auswahl einer speziellen Form.
+        </p>
+
+        <h2>Überprüfung mit Tools</h2>
+        <p>
+          <strong>EUIPO eSearch:</strong> Wortbildmarke: Es gibt zwar Übereinstimmungen
+          im Bildstil (z.B. Anordnung/Ausrichtung, Roboter), jedoch ergibt sich durch
+          das einzigartige Wort (Fantasiename) im Gesamteindruck keine Verwechslungsgefahr.
+        </p>
+        <p>
+          Bildmarke: Ähnliche Logos, da ein Reagenzglas ein freies Basissymbol
+          ist. Durch Gesamtkomposition (Roboterkopf, Farbgebung, Reagenzglas)
+          entsteht ein eigenständiges und unterscheidbares Gesamtbild.
+        </p>
+        <p>
+          Farbmarke: Farben sind schwer patentierbar; der Einsatz von
+          Grundfarben als Verlauf erhöht die Unterscheidbarkeit und reduziert
+          Verwechslungsgefahr.
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,478 @@
+main {
+  padding: 12px 0 12px;
+}
+
+.topbar {
+  padding: 10px 0;
+}
+
+footer {
+  padding: 12px 0;
+}
+
+.checkoutShell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.checkoutHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  margin: 2px 0 10px;
+}
+
+.checkoutHeadText h1 {
+  margin: 0 0 4px;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -0.4px;
+}
+
+.muted {
+  margin: 0;
+  color: var(--muted);
+}
+
+.small {
+  font-size: 13px;
+}
+
+.checkoutGrid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 12px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(17, 24, 39, 0.55);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  min-height: 0;
+}
+
+.panelHead h2 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.panelHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.sep {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+  opacity: 0.9;
+}
+
+.panel.form,
+.panel.summary,
+.successPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.formScroll,
+.summaryScroll,
+.successScroll {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.panel.form .actions {
+  margin-top: auto;
+}
+
+/* Inputs */
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field.span2 {
+  grid-column: span 2;
+}
+
+.field label {
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+
+.field input::placeholder {
+  color: rgba(229, 231, 235, 0.55);
+}
+
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(229, 231, 235, 0.68);
+}
+
+.payFieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.payLegend {
+  padding: 0;
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.methodOption {
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+
+.methodOption input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.methodInner {
+  display: grid;
+  gap: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 10px;
+  min-height: 68px;
+}
+
+.methodTitle {
+  font-weight: 750;
+}
+
+.methodMeta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.methodOption input:checked + .methodInner {
+  border-color: rgba(124, 58, 237, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(124, 58, 237, 0.14),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.methodOption input:focus-visible + .methodInner {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
+.cardFields {
+  margin-top: 12px;
+}
+
+.consentRow {
+  margin-top: 10px;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: rgba(229, 231, 235, 0.9);
+}
+
+.check input {
+  margin-top: 3px;
+  transform: scale(1.05);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.status {
+  min-height: 20px;
+  color: rgba(229, 231, 235, 0.75);
+  font-size: 13px;
+}
+
+.btn.loading {
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.summary .planBox {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(15, 23, 42, 0.55);
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.summary .planBox.highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(34, 197, 94, 0.12),
+    rgba(15, 23, 42, 0.55)
+  );
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.planTop {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.planName {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.55);
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.miniFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+}
+
+.miniFeatures li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.dot {
+  margin-top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  flex: 0 0 auto;
+}
+
+.priceBox {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.priceBox .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 13px;
+}
+
+.priceBox .row.total {
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.fine {
+  margin: 8px 0 0;
+  color: rgba(229, 231, 235, 0.72);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.summaryCtas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.trustBox {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(17, 24, 39, 0.35);
+}
+
+.trustTitle {
+  font-weight: 750;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.trustList {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.trustList li {
+  margin: 5px 0;
+}
+
+/* Success */
+.successPanel {
+  margin-top: 10px;
+}
+
+.successGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.successCard,
+.invoiceCard {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px;
+}
+
+.successCard h3,
+.invoiceCard h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.kv {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.kvRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.invoiceMeta {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(229, 231, 235, 0.9);
+}
+
+.invoiceMeta span {
+  color: var(--muted);
+}
+
+.invoiceTo {
+  font-size: 13px;
+  color: rgba(229, 231, 235, 0.9);
+}
+
+.invoiceName {
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.invoiceLine {
+  margin-top: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .checkoutGrid {
+    grid-template-columns: 1fr;
+  }
+  .methodGrid {
+    grid-template-columns: 1fr;
+  }
+  .successGrid {
+    grid-template-columns: 1fr;
+  }
+  .field.span2 {
+    grid-column: auto;
+  }
+  .fieldsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 820px) {
+  .hint,
+  .fine {
+    display: none;
+  }
+  .checkoutHeader {
+    margin-bottom: 8px;
+  }
+  .panel {
+    padding: 10px;
+  }
+}

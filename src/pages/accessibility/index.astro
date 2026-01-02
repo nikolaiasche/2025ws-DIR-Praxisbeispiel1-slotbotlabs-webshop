@@ -1,7 +1,119 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/accessibility.css";
+
+const title = "Barrierefreiheitserklärung | SlotBotBuddy";
+const description =
+  "Erklärung zur Barrierefreiheit für den SlotBotBuddy Webshop (Slot Bot Labs) gemäß WZG sowie WCAG 2.2 AA.";
 ---
-<BaseLayout title={`Accessability`}>
-  <h1>Barrierefreiheitserklärung</h1>
-  <p>Platzhalter – wird später mit Erklärung, Feedback-Mechanismus etc. ergänzt.</p>
+
+<BaseLayout title={title} description={description}>
+  <article class="a11y-page" aria-labelledby="page-title">
+    <section
+      class="a11y-shell"
+      aria-label="Barrierefreiheitserklärung (scrollbarer Bereich)"
+    >
+      <div class="a11y-scroll" tabindex="0">
+        <h1 id="page-title">Erklärung zur Barrierefreiheit</h1>
+        <p>
+          Slot Bot Labs ist bemüht, seine Website SlotBotBuddy Webshop im
+          Einklang mit dem Bundesgesetz über den barrierefreien Zugang zu
+          Websites und mobilen Anwendungen des Bundes
+          (Web-Zugänglichkeits-Gesetz – WZG, BGBl. I Nr. 59/2019 idgF)
+          barrierefrei zugänglich zu machen, sowie seine Website im Einklang mit
+          den Web Content Accessibility Guidelines (WCAG) 2.2, Konformitätsstufe
+          AA, barrierefrei zugänglich zu gestalten.
+        </p>
+
+        <h2>Stand der Vereinbarkeit mit den Anforderungen</h2>
+        <p>
+          Diese Website ist teilweise mit der Konformitätsstufe AA der
+          „Richtlinien für barrierefreie Webinhalte – WCAG 2.2“ sowie mit dem
+          geltenden Europäischen Standard EN 301 549 nach der Richtlinie (EU)
+          2016/2102 vereinbar.
+        </p>
+        <p>
+          Die teilweise Vereinbarkeit ergibt sich aus den nachstehend
+          aufgeführten Unvereinbarkeiten.
+        </p>
+
+        <h2>Nicht barrierefreie Inhalte</h2>
+        <p>
+          Derzeit sind keine wesentlichen Barrieren bekannt. Sollten dennoch
+          einzelne Inhalte oder Funktionen nicht vollständig barrierefrei sein,
+          werden diese laufend überprüft und nach Möglichkeit verbessert.
+          Sollten Informationen auf der Website nicht barrierefrei zugänglich
+          sein, können diese auf Anfrage per E-Mail in barrierefreier Form zur
+          Verfügung gestellt werden.
+        </p>
+
+        <h2>Erstellung der Erklärung zur Barrierefreiheit</h2>
+        <p>Diese Erklärung wurde am 28. Dezember 2025 erstellt.</p>
+        <p>
+          Die Bewertung der Barrierefreiheit erfolgte im Rahmen einer
+          Selbstbewertung durch Slot Bot Labs unter Einsatz folgender Methoden
+          und Tools:
+        </p>
+        <ul>
+          <li>Manuelle Tastaturtests</li>
+          <li>WCAG-Checkliste (WCAG 2.2 AA)</li>
+          <li>Automatisierte Tests mit axe DevTools, WAVE und Lighthouse</li>
+        </ul>
+        <p>Diese Erklärung wurde zuletzt am 28. Dezember 2025 überprüft.</p>
+
+        <h2>Feedback und Kontaktangaben</h2>
+        <p>
+          Sollten Ihnen Barrieren auffallen, die Sie an der Nutzung unserer
+          Website hindern, oder benötigen Sie Informationen zu nicht
+          barrierefreien Inhalten, kontaktieren Sie uns bitte unter folgender
+          Emailadresse:
+        </p>
+        <p>
+          <a class="btn" href="mailto:accessibility@slotbotlabs.example">
+            accessibility@slotbotlabs.example
+          </a>
+        </p>
+        <p>
+          Wir bemühen uns, Ihre Anfrage innerhalb von zwei Monaten zu
+          beantworten.
+        </p>
+
+        <h2>Durchsetzungsverfahren</h2>
+        <p>
+          Wenn Sie mit der Antwort aus der oben genannten Kontaktmöglichkeit
+          nicht zufrieden sind, können Sie sich mit einer Beschwerde an die
+          Beschwerdestelle der Österreichischen Forschungsförderungsgesellschaft
+          mbH (FFG) wenden.
+        </p>
+        <p>
+          Die FFG nimmt Beschwerden über ihr elektronisches Kontaktformular
+          entgegen und prüft, ob ein Verstoß gegen die Vorgaben des
+          Web-Zugänglichkeits-Gesetzes vorliegt.
+        </p>
+        <p>
+          Sofern die Beschwerde berechtigt ist, spricht die FFG
+          Handlungsempfehlungen aus und schlägt Maßnahmen zur Behebung der
+          festgestellten Mängel vor.
+        </p>
+
+        <h2>
+          Informationen zur Barrierefreiheitserklärung auf der FFG-Website
+        </h2>
+        <p>
+          Weitere Informationen zum Beschwerdeverfahren und zur Barrierefreiheit
+          nach dem Web-Zugänglichkeits-Gesetz finden Sie auf der Website der
+          Österreichischen Forschungsförderungsgesellschaft (FFG):
+        </p>
+        <p>
+          <a
+            href="https://www.ffg.at/barrierefreiheit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://www.ffg.at/barrierefreiheit
+          </a>
+        </p>
+      </div>
+    </section>
+  </article>
 </BaseLayout>

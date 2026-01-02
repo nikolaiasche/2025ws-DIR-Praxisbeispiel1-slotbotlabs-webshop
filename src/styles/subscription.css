@@ -1,0 +1,76 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  position: relative;
+  display: block;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.cardBody {
+  margin-left: 38px;
+}
+
+.cardBody .price {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.cardBody p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.cardHeader h2 {
+  margin: 0;
+}
+
+.card:hover {
+  filter: brightness(1.05);
+}
+
+h2 {
+  margin: 0 0 6px 0;
+}
+
+.planIcon,
+.buyIcon {
+  width: 28px;
+  height: 28px;
+  opacity: 0.9;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+.buyIcon {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+}
+
+.price {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+p {
+  margin: 0 0 8px 0;
+  opacity: 0.9;
+}
