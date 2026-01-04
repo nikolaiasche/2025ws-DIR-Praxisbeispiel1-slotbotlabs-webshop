@@ -1,7 +1,257 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/privacy.css";
+
+const title = "Datenschutzerklärung | SlotBotBuddy";
+const description =
+  "Datenschutzerklärung der Slot Bot Labs GmbH: Verantwortlicher, Rechtsgrundlagen, Verarbeitungsvorgänge, Cookies und Betroffenenrechte.";
 ---
-<BaseLayout title={"Datenschutz"}>
-  <h1>Datenschutzerklärung</h1>
-  <p>Platzhalter – DSGVO Inhalte folgen.</p>
+
+<BaseLayout title={title} description={description}>
+  <article class="cr-page" aria-labelledby="page-title">
+    <section
+      class="cr-shell"
+      aria-label="Datenschutzerklärung (scrollbarer Bereich)"
+    >
+      <div class="cr-scroll" tabindex="0">
+        <h1 id="page-title">Datenschutzerklärung</h1>
+
+        <h2>1. Verantwortlicher und Geltungsbereich</h2>
+        <p>
+          Verantwortlicher laut Datenschutz-Grundverordnung (DSGVO) ist die Slot
+          Bot Labs GmbH mit Sitz in Wien, Österreich. Diese kann über die
+          E-Mail-Adresse: support@slotbotlabs.at und ein integriertes
+          Kontaktformular im Webshop kontaktiert werden.
+        </p>
+        <p>
+          Die Datenschutzerklärung gilt für die Nutzung des Webshops, über
+          welchen die Produkte der Slot Bot Labs GmbH vertrieben werden, die
+          Browser-Extension und die mobile App für Smartphone und Tablet. Sie
+          klärt über Art, Umfang und den Zweck der personenbezogenen Daten,
+          welche im Rahmen der Nutzung der angebotenen Produkte und
+          Dienstleistungen der Slot Bot Labs GmbH gesammelt werden auf.
+        </p>
+
+        <h2>2. Datenschutzbeauftragte</h2>
+        <p>
+          Die Slot Bot Labs GmbH hat Max Mock als Datenschutzbeauftragen
+          bestellt. Dieser ist über die E-Mail-Adresse: max.mock@slotbotlabs.at
+          erreichbar. Max Mock ist die erste Ansprechperson für potenziell
+          betroffene Personen und beantworten alle Fragen im Zusammenhang mit
+          Datenschutz und der DSGVO.
+        </p>
+
+        <h2>3. Was sind personenbezogene Daten?</h2>
+        <p>
+          Personenbezogene Daten sind alle Informationen, welche eine
+          Identifizierung einer natürlichen Person ermöglichen oder sich auf sie
+          beziehen. Unteranderem der Name, E-Mail-Adresse, IP-Adresse,
+          Rechnungsdaten oder etwaige andere Informationen, welche eine direkte
+          oder indirekte Identifizierung oder Zuordnung der Person ermöglichen.
+        </p>
+
+        <h2>4. Allgemeines zur Datenverarbeitung</h2>
+        <ol class="alpha-list">
+          <li>
+            <strong>a. Umfang</strong>
+            <p>
+              Von der Slot Bot Labs GmbH, werden bei der Nutzung ihrer Dienste
+              oder Produkte nur die Daten verarbeitet und gespeichert, welche
+              für einen reibungslosen Betrieb, zur Kommunikation mit Nutzerinnen
+              und Nutzer oder rechtlich vorgesehen sind.
+            </p>
+          </li>
+
+          <li>
+            <strong>b. Rechtsgrundlage</strong>
+            <p>
+              Die Slot Bot Labs GmbH beruft sich auf folgende Rechtsgrundlagen
+              zur Verarbeitung und Speicherung personenbezogener Daten:
+            </p>
+            <ul>
+              <li>
+                welche zur Erfüllung von Verträgen oder zur Durchführung
+                vorvertraglicher Maßnahmen
+              </li>
+              <li>auf Grundlage einer erteilten Einwilligung</li>
+              <li>
+                welche benötigt werden, um die gesetzlichen Pflichten der Slot
+                Bot Labs GmbH zu erfüllen
+              </li>
+              <li>
+                welche zur Wahrung berechtigter Interessen des Verantwortlichen,
+                sofern dies keinem ausdrücklichen Interesse der betroffenen
+                Person entgegensteht
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>c. Datenlöschung und Speicherdauer</strong>
+            <p>
+              Personenbezogene Daten werden nur so lange gespeichert, wie dies
+              für die jeweiligen Zwecke oder aus gesetzlichen Pflichten
+              notwendig ist. Nach wegfallen des Zwecks oder Ablauf gewisser
+              gesetzlicher Fristen, werden die personenbezogenen Daten
+              unumgänglich gelöscht oder anonymisiert.
+            </p>
+          </li>
+        </ol>
+
+        <h2>5. Empfänger der Daten / Auftragsverarbeiter</h2>
+        <p>
+          Um die von der Slot Bot Labs GmbH angebotenen Leistungen zu erbringen
+          und einen reibungslosen Ablauf ihrer Produkte zu gewährleisten, werden
+          gegebenenfalls personenbezogene Daten an externe Dienstleister bzw.
+          Dritte übermittelt. Dazu zählen besonders Hosting- und
+          Zahlungsdienstleister. Die externen Dienstleister bzw. Dritte
+          verarbeiten und erhalten personenbezogene Daten ausschließlich auf der
+          Grundlage entsprechender Vereinbarungen und gemäß der DSGVO und
+          anderen Gesetzen.
+        </p>
+
+        <h2>6. Einzelne Verarbeitungsvorgänge</h2>
+
+        <ol class="alpha-list">
+          <li>
+            <strong
+              >a. Bereitstellung des Webshops und Erstellung von Logfiles</strong
+            >
+            <p>
+              Der Webshop wird durch GitHub Pages gehostet, wodurch automatisch
+              Informationen und personenbezogene Daten in Server-Logfiles
+              gespeichert werden. Diese Informationen umfassen unteranderem die
+              IP-Adresse, Datum und Uhrzeit des Aufrufs der Website, sowie
+              Informationen zum verwendeten Browser. Die Verarbeitung erfolgt
+              zur Sicherstellung eines reibungslosen Betriebs und der
+              technischen Sicherheit des Webshops.
+            </p>
+          </li>
+
+          <li>
+            <strong>b. Kontaktformular &amp; Support-E-Mail</strong>
+            <p>
+              Bei der Kontaktaufnahme mit Hilfe des Kontaktformulars oder per
+              Support-E-Mail werden die eingegebenen personenbezogene Daten wie
+              Vorname, Nachname, E-Mail-Adresse, die Nachricht und eventuell das
+              gewählte Thema verarbeitet und an die Support-E-Mail:
+              support@slotbotlabs.at gesendet.
+            </p>
+          </li>
+
+          <li>
+            <strong>c. Zahlungs- &amp; Rechnungsabwicklung</strong>
+            <p>
+              Durch den Abschluss eines Abonnements werden personenbezogene
+              Daten zur Zahlungs- und Rechnungsabwicklung von der Slot Bot Labs
+              GmbH verarbeitet. Hierbei handelt es sich um Vor- sowie Nachname,
+              die E-Mail-Adresse, die Rechnungsadresse und auch das ausgewählte
+              Abomodell.
+            </p>
+            <p>
+              Die Abwicklung der Zahlung wird von einem externen
+              Zahlungsdienstleister (Visa / Kreditkarte, Google Pay, Apple Pay)
+              durchgeführt. Sensible Zahlungsdaten wie die Kreditkartennummer,
+              Ablaufdatum, CVC werden ausschließlich durch den jeweiligen
+              Zahlungsanbieter verarbeitet und die Slot Bot Labs GmbH erhält
+              keinen Zugriff auf die vollständigen für die Zahlung benötigten
+              Informationen.
+            </p>
+          </li>
+
+          <li>
+            <strong>d. Browser-Extension</strong>
+            <p>
+              Die Browser-Extension von SlotBotBuddy verarbeitet
+              personenbezogene Daten der Nutzerinnen, die für eine
+              ordnungsmäßige Nutzung und Konfiguration der Funktionen notwendig
+              sind. Unteranderem die konfigurierten An- und Abmeldezeitpunkte,
+              Lehrveranstaltungen oder Prüfungen sowie weitere technische
+              Informationen, welche für die Ausführung der Browser-Extension
+              benötigt werden.
+            </p>
+            <p>
+              Diese Daten werden ausschließlich zum Zweck der Vertragserfüllung
+              und der ordentlichen Bereitstellung der Funktionen der
+              Browser-Extension, sowie um eine fehlerfreie und stabile
+              Verwendung der Browser-Extension zu gewährleisten. Der Zugriff auf
+              System der Universitäten erfolgt ausschließlich über öffentlich
+              zugängliche Schnittstelle und erlaubter Automatisierung.
+            </p>
+          </li>
+
+          <li>
+            <strong>e. Mobile App</strong>
+            <p>
+              Durch die Nutzung der mobilen App auf einem Tablet oder Smartphone
+              werden personenbezogene Daten verarbeitet, die für eine
+              ordnungsgemäße Nutzung der App erforderlich sind. Unteranderem die
+              konfigurierten An- und Abmeldezeitpunkte, Lehrveranstaltungen oder
+              Prüfungen sowie weitere technische Informationen, welche für die
+              Verwendung der Funktionen der App benötigt werden.
+            </p>
+            <p>
+              Diese Daten werden ausschließlich zum Zweck der Vertragserfüllung
+              und der ordentlichen Bereitstellung der Funktionen der App, sowie
+              um eine fehlerfreie und stabile Verwendung der App auf Smartphone
+              und Tablet zu gewährleisten.
+            </p>
+          </li>
+        </ol>
+
+        <h2>7. Cookies</h2>
+        <p>
+          Der Webshop verwendet Cookies zur Bereitstellung des Dienstes. Hierbei
+          werden sowohl technisch notwendige als auch optionale Analyse- und
+          Tracking-Cookies verwendet und gespeichert. Für die optionalen
+          Analyse- und Tracking-Cookies wird beim Besuch des Webshops im
+          Vorhinein über einen Cookie-Banner eine Einwilligung eingeholt. Der
+          Webshop kann auch ohne Einwilligung der optionalen Cookies erfolgen.
+          Die Einwilligung über die Cookies kann jederzeit über einen
+          entsprechenden Link in der Fußzeile des Webshops nachträglich
+          angepasst oder widerrufen werden.
+        </p>
+
+        <h2>8. Tracking- und Analyse Tools</h2>
+        <p>
+          Im Webshop werden derzeit optionale Tracking- oder Analyse-Tools
+          verwendet, welche Daten an Externe oder Dritte weitergeben könnten.
+        </p>
+
+        <h2>9. Sicherungsmaßnahmen zum Schutz gespeicherter Daten</h2>
+        <p>
+          Die personenbezogenen Daten werden entsprechend mit geeigneten
+          gängigen technischen und organisatorischen Sicherheitsmaßnahmen
+          geschützt. Dies betrifft insbesondere den Schutz vor unbefugtem
+          Zugriff, Verlust bzw. Manipulation der Daten und die
+          Sicherheitsmaßnahmen werden entsprechend laufend verbessert und dem
+          Stand der Technik angepasst.
+        </p>
+
+        <h2>10. Betroffenen- und Widerspruchsrechte</h2>
+        <p>
+          Betroffene Personen haben das Recht auf eine Auskunft über sämtliche
+          bei der Verarbeitung verwendeten personenbezogenen Daten, sowie auf
+          eine entsprechende Berichtigung, Löschung oder Einschränkung dieser
+          bei der Verarbeitung und Speicherung. Es besteht auf das Recht auf
+          Datenübertragbarkeit sowie das Recht der Verarbeitung und Speicherung
+          der personenbezogenen Daten zu widersprechen. Auch werden die Daten
+          bei einer Anfrage zur Auskunft in einem geeigneten Medium den
+          Betroffenen zur Verfügung gestellt. Anfragen dieser Art können
+          jederzeit per E-Mail an support@slotbotlabs.at, über das
+          Kontaktformular (Thema – Datenschutz) oder den Datenschutzbeauftragen
+          gestellt werden.
+        </p>
+
+        <h2>11. Beschwerderecht bei der Datenschutzbehörde</h2>
+        <p>
+          Betroffene Personen haben das Recht Beschwerde bei der
+          Datenschutzbehörde oder anderen Aufsichtsbehörden einzulegen. In
+          Österreich ist dies im speziellen die Datenschutzbehörde. Auch kann
+          das Beschwerderecht bei einer anderen zuständigen Aufsichtsbehörde der
+          Europäischen Union geltend gemacht werden.
+        </p>
+      </div>
+    </section>
+  </article>
 </BaseLayout>

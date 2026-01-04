@@ -1,7 +1,123 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/imprint.css";
+
+const title = "Impressum | SlotBotBuddy";
+const description =
+  "Impressum der Slot Bot Labs GmbH: Unternehmensdaten, Kontakt, Aufsichtsbehörde, Rechtsvorschriften und Haftung.";
 ---
-<BaseLayout title={"Impressum"}>
-  <h1>Impressum</h1>
-  <p>Platzhalter – Unternehmensdaten, Kontakt, Vertretungsbefugte, etc.</p>
+
+<BaseLayout title={title} description={description}>
+  <article class="cr-page" aria-labelledby="page-title">
+    <section class="cr-shell" aria-label="Impressum (scrollbarer Bereich)">
+      <div class="cr-scroll" tabindex="0">
+        <h1 id="page-title">Impressum</h1>
+
+        <h2>Medieninhaber und Diensteanbieter</h2>
+        <p>
+          Slot Bot Labs GmbH<br />
+          Mockweg 123<br />
+          1010 Wien<br />
+          Österreich
+        </p>
+
+        <h2>Unternehmensgegenstand</h2>
+        <p>
+          Die Slot Bot Labs GmbH ist für die Entwicklung und den Betrieb von
+          Software-as-a-Service Lösungen (SaaS) in der Form einer mobilen App
+          für Smartphone und Tablets und einer Browser-Extension zuständig. Die
+          Applikation dient der Unterstützung von Studierenden bei der Anmeldung
+          zu Lehrveranstaltungen und Prüfungen.
+        </p>
+
+        <h2>Unternehmensdaten</h2>
+        <p>
+          Rechtsform: Gesellschaft mit beschränkter Haftung (GmbH)<br />
+          Firmenbuchnummer: FN 123456a<br />
+          Firmenbuchgericht: Handelsgericht Wien<br />
+          Sitz: Wien<br />
+          Geschäftsführung: Nikolai Asche<br />
+          Anzahl der Mitarbeiter: unter 10
+        </p>
+
+        <h2>Kontakt</h2>
+        <p>
+          E-Mail: support@slotbotlabs.at<br />
+          Kontaktformular: verfügbar im Webshop
+        </p>
+
+        <h2>Aufsichtsbehörde</h2>
+        <p>
+          Magistratisches Bezirksamt für den 1. Bezirk<br />
+          Wipplingerstraße 8<br />
+          1010 Wien, Österreich
+        </p>
+
+        <h2>Mitgliedschaften:</h2>
+        <p>
+          Mitglied der Wirtschaftskammer Wien<br />
+          Fachgruppe: Informationstechnologie
+        </p>
+
+        <h2>Anwendbare Rechtsvorschriften:</h2>
+        <p>
+          Gewerbeordnung (GewO)<br />
+          E-Commerce-Gesetz (ECG)<br />
+          Unternehmensgesetzbuch (UGB)<br />
+          Mediengesetz (MedienG)<br />
+          Datenschutz-Grundverordnung (DSGVO)<br />
+          Urheberrechtsgesetz (UrhG)
+        </p>
+
+        <h2>Grundlegende Richtung des Mediums (§ 25 Abs. 4 MedienG)</h2>
+        <p>
+          Diese Website dient als Webshop zur Information und des Vertriebs der
+          Produkte und Dienstleistungen der Slot Bot Labs GmbH.
+        </p>
+
+        <h2>Haftung für Inhalte</h2>
+        <p>
+          Die Website und deren Inhalte wurden mit Sorgfalt erstellt und die Slot
+          Bot Labs GmbH übernimmt keine Verantwortung für die Richtigkeit,
+          Vollständigkeit und Aktualität der veröffentlichten Inhalte. Die Slot
+          Bot Labs GmbH ist als Dienstanbieter für die eigenen Inhalte auf dieser
+          Website nach allgemein gültigen Gesetzen verantwortlich.
+        </p>
+
+        <h2>Haftung für Links</h2>
+        <p>
+          Die Website enthält Links bzw. Prozesse besonders bei der
+          Zahlungsabwicklung, welche zu externen Websites Dritter weiterlauten.
+          Auf den Inhalt dieser Websites hat die Slot Bot Labs GmbH keinen
+          Einfluss und es wird für diese Inhalte keine Haftung übernommen, da zum
+          Zeitpunkt der Verlinkung auf der eigenen Website kein rechtswidriger
+          Inhalt erkennbar war.
+        </p>
+
+        <h2>Urheberrecht</h2>
+        <p>
+          Die Inhalte auf dieser Website unterliegen dem österreichischen
+          Urheberrecht und sind entsprechend gekennzeichnet. Für die
+          Vervielfältigung, Bearbeitung, Verbreitung sowie etwaige sonstige
+          Verwertung außerhalb des Urheberrechts ist eine schriftliche Erlaubnis
+          des entsprechenden Rechteinhabers notwendig.
+        </p>
+
+        <h2>Online-Streitbeilegung</h2>
+        <p>
+          Verbraucher können sich bei Beschwerden an die Online-Streitbeilegungsplattform
+          der EU richten:{" "}
+          <a href="https://consumer-redress.ec.europa.eu/index_de">
+            https://consumer-redress.ec.europa.eu/index_de
+          </a>
+        </p>
+
+        <p>
+          Slot Bot Labs GmbH ist nicht verpflichtet an Streitbeilegungsverfahren
+          vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </div>
+    </section>
+  </article>
 </BaseLayout>
+
