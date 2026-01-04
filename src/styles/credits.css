@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.cr-list-number {
+  font-weight: 700;
+}
+
 .cr-scroll {
   max-height: min(70vh, 720px);
   overflow: auto;
@@ -63,6 +67,11 @@
 
 .cr-scroll ul {
   padding-left: 1.2rem;
+}
+
+.cr-subul {
+  list-style-type: disc;
+  list-style-position: outside;
 }
 
 .cr-scroll ul li {

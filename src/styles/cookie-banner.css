@@ -57,3 +57,10 @@
   gap: 10px;
   align-items: center;
 }
+
+.cookie-banner .btn:focus-visible,
+.cookie-card a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 12px;
+}

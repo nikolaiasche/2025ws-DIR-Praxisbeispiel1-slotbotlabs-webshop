@@ -12,7 +12,9 @@ function $(id: string): HTMLElement | null {
 
 function getConsent(): Consent | null {
   try {
-    return JSON.parse(localStorage.getItem(CONSENT_KEY) || "null") as Consent | null;
+    return JSON.parse(
+      localStorage.getItem(CONSENT_KEY) || "null"
+    ) as Consent | null;
   } catch {
     return null;
   }
@@ -26,9 +28,7 @@ function setConsent(consent: { analytics: boolean }) {
   };
   try {
     localStorage.setItem(CONSENT_KEY, JSON.stringify(data));
-  } catch {
-
-  }
+  } catch {}
 }
 
 function applyConsent() {
@@ -98,7 +98,16 @@ export function initCookieConsent() {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !banner.hidden) closeBanner(banner);
+      if (e.key !== "Escape") return;
+      if (banner.hidden) return;
+
+      const existing = getConsent();
+      if (!existing) {
+        setConsent({ analytics: false });
+        applyConsent();
+      }
+
+      closeBanner(banner);
     });
 
     const openSettings = () => {
@@ -129,7 +138,9 @@ export function initCookieConsent() {
 }
 
 function bindFooterCookieSettingsLink() {
-  const link = document.getElementById("footer-cookie-settings") as HTMLAnchorElement | null;
+  const link = document.getElementById(
+    "footer-cookie-settings"
+  ) as HTMLAnchorElement | null;
   if (!link) return;
 
   if (link.dataset.ccBound === "1") return;
@@ -147,11 +158,11 @@ export function openCookieSettings() {
 
   initCookieConsent();
 
-  const fn = (window as any).openCookieSettings || (window as any).__openCookieSettings;
+  const fn =
+    (window as any).openCookieSettings || (window as any).__openCookieSettings;
   if (typeof fn === "function") fn();
   else document.dispatchEvent(new CustomEvent("cookie:open-settings"));
 }
-
 
 export function initCookieClient() {
   if (typeof window === "undefined") return;
