@@ -10,37 +10,53 @@ type Plan = {
   features: string[];
 };
 
-const VAT_RATE = 0.2;
-
-const PLANS: Record<PlanId, Plan> = {
-  standard: {
-    id: "standard",
-    name: "Standard",
-    priceCents: 499,
-    tagline: "Für den stressfreien Alltag.",
-    features: [
-      "Automatische Anmeldung zu LVAs/Prüfungen",
-      "1 Universität / Account",
-      "Erinnerungen & Status-Notifications",
-      "Basis-Regelset (Zeitfenster, Gruppen, Wiederholungen)",
-    ],
-  },
-  premium: {
-    id: "premium",
-    name: "Premium",
-    priceCents: 999,
-    tagline: "Maximale Chance bei knappen Slots.",
-    features: [
-      "Alles aus Standard",
-      "Mehrere Universitäten / Accounts",
-      "Prioritätsmodus für zeitkritische Anmeldungen",
-      "Kalender-Sync & erweiterte Regeln",
-      "Priority Support",
-    ],
-  },
+type CheckoutConfig = {
+  vatRate: number;
+  plans: Record<PlanId, Plan>;
 };
+
 const $ = <T extends Element = Element>(sel: string, root: ParentNode = document) =>
   root.querySelector<T>(sel);
+
+function readCheckoutConfig(): CheckoutConfig {
+  const el = document.getElementById("checkout-config") as HTMLScriptElement | null;
+  const raw = el?.textContent?.trim();
+
+  if (!raw) {
+    throw new Error(
+      'Missing checkout config. Expected <script id="checkout-config" type="application/json">...</script>.'
+    );
+  }
+
+  const parsed = JSON.parse(raw) as Partial<CheckoutConfig>;
+
+  if (typeof parsed.vatRate !== "number") {
+    throw new Error("Invalid checkout config: vatRate must be a number.");
+  }
+
+  const plans = parsed.plans as CheckoutConfig["plans"] | undefined;
+  if (!plans || typeof plans !== "object") {
+    throw new Error("Invalid checkout config: plans missing.");
+  }
+
+  for (const id of ["standard", "premium"] as PlanId[]) {
+    const p = plans[id];
+    if (
+      !p ||
+      p.id !== id ||
+      typeof p.name !== "string" ||
+      typeof p.tagline !== "string" ||
+      typeof p.priceCents !== "number" ||
+      !Array.isArray(p.features)
+    ) {
+      throw new Error(`Invalid checkout config: plan "${id}" missing or malformed.`);
+    }
+  }
+
+  return { vatRate: parsed.vatRate, plans };
+}
+let CONFIG: CheckoutConfig;
+CONFIG = readCheckoutConfig();
 
 document.addEventListener("click", (e) => {
   const target = e.target as Element | null;
@@ -90,7 +106,7 @@ function storePlan(plan: PlanId) {
   try {
     localStorage.setItem(STORAGE_KEY, plan);
   } catch {
-
+    // ignore
   }
 }
 
@@ -118,10 +134,10 @@ function resolvePlanId(): { planId: PlanId; hadPlanParam: boolean } {
   return { planId: "standard", hadPlanParam };
 }
 
-function calcPrices(priceCents: number) {
+function calcPrices(priceCents: number, vatRate: number) {
   const fmt = new Intl.NumberFormat("de-AT", { style: "currency", currency: "EUR" });
   const gross = priceCents / 100;
-  const net = Math.round((gross / (1 + VAT_RATE)) * 100) / 100;
+  const net = Math.round((gross / (1 + vatRate)) * 100) / 100;
   const vat = Math.round((gross - net) * 100) / 100;
 
   return {
@@ -134,7 +150,7 @@ function calcPrices(priceCents: number) {
 }
 
 function applyPlanToUi(planId: PlanId, form: HTMLFormElement) {
-  const plan = PLANS[planId] ?? PLANS.standard;
+  const plan = CONFIG.plans[planId] ?? CONFIG.plans.standard;
 
   form.dataset.planId = plan.id;
   form.dataset.planName = plan.name;
@@ -187,7 +203,7 @@ function applyPlanToUi(planId: PlanId, form: HTMLFormElement) {
     }
   }
 
-  const { fmt, gross, net, vat, grossLabel } = calcPrices(plan.priceCents);
+  const { fmt, gross, net, vat, grossLabel } = calcPrices(plan.priceCents, CONFIG.vatRate);
 
   const priceBox = document.querySelector<HTMLElement>(".priceBox");
   if (priceBox) {
@@ -293,7 +309,7 @@ function focusFirstInvalid(form: HTMLFormElement) {
 
     if (!form.checkValidity()) {
       statusEl.textContent =
-        "Bitte prüfe die Eingaben – es fehlen Pflichtfelder oder Angaben sind ungültig.";
+        "Bitte prüfe die Eingaben! Es fehlen Pflichtfelder oder Angaben sind ungültig.";
       focusFirstInvalid(form);
       return;
     }
@@ -321,7 +337,10 @@ function focusFirstInvalid(form: HTMLFormElement) {
 
     const planName = (form.dataset.planName ?? "Standard").trim();
     const planPriceCents = Number(form.dataset.planPriceCents ?? "0");
-    const { grossLabel } = calcPrices(Number.isFinite(planPriceCents) ? planPriceCents : 0);
+    const { grossLabel } = calcPrices(
+      Number.isFinite(planPriceCents) ? planPriceCents : 0,
+      CONFIG.vatRate
+    );
 
     const firstName = String(fd.get("firstName") || "").trim();
     const lastName = String(fd.get("lastName") || "").trim();
@@ -351,7 +370,8 @@ function focusFirstInvalid(form: HTMLFormElement) {
       fillOutSuccess(payload);
 
       const planIdNow = normalizePlanId(form.dataset.planId) ?? "standard";
-      const planNow = PLANS[planIdNow] ?? PLANS.standard;
+      const planNow = CONFIG.plans[planIdNow] ?? CONFIG.plans.standard;
+
       const invoiceMeta = document.querySelector<HTMLElement>(".invoiceMeta");
       if (invoiceMeta) {
         const metaLines = Array.from(invoiceMeta.querySelectorAll<HTMLDivElement>("div"));
@@ -369,3 +389,8 @@ function focusFirstInvalid(form: HTMLFormElement) {
     }, 900);
   });
 })();
+
+
+
+
+

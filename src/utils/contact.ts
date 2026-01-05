@@ -54,7 +54,7 @@ export function initContactForm(): void {
 
     if (!form.checkValidity()) {
       form.reportValidity();
-      setStatus("error", "Bitte prüfe deine Eingaben.", "Ein oder mehrere Pflichtfelder fehlen oder sind ungültig.");
+      setStatus("error", "Bitte prüfe deine Eingaben!", "Ein oder mehrere Pflichtfelder fehlen bzw. sind fehlerhaft.");
       return;
     }
 

@@ -12,12 +12,12 @@ const plans = {
     name: "Standard",
     priceCents: 499,
     priceLabel: "4,99 € / Monat",
-    tagline: "Für den stressfreien Alltag.",
+    tagline: "Nie mehr auf der Warteliste.",
     features: [
-      "Automatische Anmeldung zu LVAs/Prüfungen",
-      "1 Universität / Account",
-      "Erinnerungen & Status-Notifications",
-      "Basis-Regelset (Zeitfenster, Gruppen, Wiederholungen)",
+      "Automatische Anmeldung bei LVAs",
+      "1 Universität pro Abo",
+      "Konfiguration des Anmeldezeitpunkts",
+      "Benachrichtigung über Erfolg und Misserfolg",
     ],
   },
   premium: {
@@ -25,18 +25,17 @@ const plans = {
     name: "Premium",
     priceCents: 999,
     priceLabel: "9,99 € / Monat",
-    tagline: "Maximale Chance bei knappen Slots.",
+    tagline: "Nie mehr den Prüfungstermin verpassen.",
     features: [
-      "Alles aus Standard",
-      "Mehrere Universitäten / Accounts",
-      "Prioritätsmodus für zeitkritische Anmeldungen",
-      "Kalender-Sync & erweiterte Regeln",
-      "Priority Support",
+      "Enthält alle Funktionen des Standardmodells.",
+      "Mehrere Universitäten pro Abo",
+      "Tiefere Konfigurationsmöglichkeiten",
+      "Anmeldung bei LVAs + Prüfungen",
     ],
   },
 } as const;
 
-type PlanId = keyof typeof plans;      // "standard" | "premium"
+type PlanId = keyof typeof plans;
 type Plan = (typeof plans)[PlanId];
 const planFromUrl = Astro.url.searchParams.get("plan");
 const selected: Plan = planFromUrl === "premium" ? plans.premium : plans.standard;
@@ -272,15 +271,6 @@ const description =
             <div class="summaryCtas">
               <a class="btn" href={withBase("/subscriptions")}>Plan ändern</a>
             </div>
-          </div>
-
-          <div class="trustBox">
-            <div class="trustTitle">Was passiert als Nächstes?</div>
-            <ol class="trustList">
-              <li>Mock: Du bestätigst die Zahlung.</li>
-              <li>Mock: Wir erstellen eine Rechnung.</li>
-              <li>Mock: Du bekommst eine Bestätigung auf der Seite.</li>
-            </ol>
           </div>
         </div>
       </aside>
