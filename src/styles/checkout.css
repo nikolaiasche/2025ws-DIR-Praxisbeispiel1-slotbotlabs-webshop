@@ -101,7 +101,6 @@ footer {
   margin-top: auto;
 }
 
-/* Inputs */
 .fieldsGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -231,7 +230,6 @@ footer {
   transform: scale(1.05);
 }
 
-/* Actions */
 .actions {
   display: flex;
   align-items: center;
@@ -445,7 +443,6 @@ footer {
   margin-top: 2px;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 980px) {
   .checkoutGrid {
     grid-template-columns: 1fr;

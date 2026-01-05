@@ -14,13 +14,13 @@ const plans = [
     id: "standard",
     name: "Standard",
     price: "4,99 € / Monat",
-    tagline: "Für den stressfreien Alltag.",
+    tagline: "Nie mehr auf der Warteliste.",
     icon: withBase("/media/images/product/standard_abo_icon.png"),
     features: [
-      "Automatische Anmeldung zu LVAs/Prüfungen",
-      "1 Universität / Account",
-      "Erinnerungen & Status-Notifications",
-      "Basis-Regelset (Zeitfenster, Gruppen, Wiederholungen)",
+      "Automatische Anmeldung bei LVAs",
+      "1 Universität pro Abo",
+      "Konfiguration des Anmeldezeitpunkts",
+      "Benachrichtigung über Erfolg und Misserfolg",
     ],
     primaryCta: { label: "Standard wählen", href: "/checkout" },
     secondaryCta: { label: "Details", href: "/abo/standard" },
@@ -30,25 +30,24 @@ const plans = [
     id: "premium",
     name: "Premium",
     price: "9,99 € / Monat",
-    tagline: "Maximale Chance bei knappen Slots.",
+    tagline: "Nie mehr den Prüfungstermin verpassen.",
     icon: withBase("/media/images/product/premium_abo_icon.png"),
     features: [
-      "Alles aus Standard",
-      "Mehrere Universitäten / Accounts",
-      "Prioritätsmodus für zeitkritische Anmeldungen",
-      "Kalender-Sync & erweiterte Regeln",
-      "Priority Support",
+      "Enthält alle Funktionen des Standardmodells.",
+      "Mehrere Universitäten pro Abo",
+      "Tiefere Konfigurationsmöglichkeiten",
+      "Anmeldung bei LVAs + Prüfungen",
     ],
     primaryCta: { label: "Premium wählen", href: "/checkout" },
     secondaryCta: { label: "Details", href: "/abo/premium" },
     highlight: true,
-    badge: "Empfohlen",
+    badge: "Nutzerfavorit",
   },
 ];
 
-const title = "SlotBotBuddy – Dein Slot, automatisch gesichert";
+const title = "SlotBotBuddy – Dein Buddy für überlaufene Lehrveranstaltungen.";
 const description =
-  "SlotBotBuddy unterstützt dich bei zeitkritischen Anmeldungen zu Lehrveranstaltungen und Prüfungen – mit erlaubter Automatisierung über offizielle Schnittstellen.";
+  "SlotBotBuddy unterstützt dich bei der Anmeldung zu Lehrveranstaltungen und Prüfungen, welche hoffnungslos überlaufen sind komplett automatisiert. Perfekt für Langschläfer.";
 ---
 
 <BaseLayout title={title} description={description} showFooter={true}>
@@ -56,9 +55,7 @@ const description =
     <div class="heroLeft">
       <h1>Dein Slot, automatisch gesichert.</h1>
       <p class="sub">
-        SlotBotBuddy unterstützt dich bei zeitkritischen Anmeldungen zu
-        Lehrveranstaltungen und Prüfungen — mit erlaubter Automatisierung über
-        offizielle, öffentlich zugängliche Schnittstellen.
+        SlotBotBuddy unterstützt dich bei der Anmeldung zu Lehrveranstaltungen und Prüfungen, welche hoffnungslos überlaufen sind komplett automatisiert und ohne frühes aufstehen.
       </p>
 
       <div class="ctaRow">
@@ -67,10 +64,10 @@ const description =
     </div>
 
     <div class="miniPanel" aria-label="Kurzinfo">
-      <div class="miniTitle">In 30 Sekunden startklar</div>
+      <div class="miniTitle">In wenigen Sekunden einsatzbereit!</div>
       <ul class="miniList">
         <li>Plan wählen</li>
-        <li>LVAs/Prüfungen konfigurieren</li>
+        <li>LVAs und Prüfungen konfigurieren</li>
         <li>Automatisierung aktivieren</li>
       </ul>
     </div>
@@ -79,7 +76,7 @@ const description =
   <section id="abo" class="abo">
     <div class="sectionHead">
       <h2>Abomodelle</h2>
-      <p class="muted">Minimal, übersichtlich, jederzeit kündbar.</p>
+      <p class="muted">Standardmodel für Langschläfer</p>
     </div>
 
     <div class="grid">
@@ -123,8 +120,7 @@ const description =
             </div>
 
             <p class="fine">
-              Hinweis: SlotBotBuddy nutzt keine Fremdzugriffe auf Uni-Systeme
-              und arbeitet nur im Rahmen erlaubter Automatisierung.
+              Hinweis: SlotBotBuddy greift nicht auf das System der Universität zu und nutzt nur erlaubte Automatisierungsmechanismen sowie Schnittstellen.
             </p>
           </article>
         ))
