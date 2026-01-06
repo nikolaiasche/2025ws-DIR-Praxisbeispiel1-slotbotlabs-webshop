@@ -8,7 +8,6 @@ const BASE_URL = import.meta.env.BASE_URL;
 const baseNoTrailing =
   BASE_URL.endsWith("/") && BASE_URL !== "/" ? BASE_URL.slice(0, -1) : BASE_URL;
 
-
 const plans = [
   {
     id: "standard",
@@ -47,7 +46,7 @@ const plans = [
 
 const title = "SlotBotBuddy – Dein Buddy für überlaufene Lehrveranstaltungen.";
 const description =
-  "SlotBotBuddy unterstützt dich bei der Anmeldung zu Lehrveranstaltungen und Prüfungen, welche hoffnungslos überlaufen sind komplett automatisiert. Perfekt für Langschläfer.";
+  "SlotBotBuddy übernimmt komplett automatisiert die Anmeldung zu LVAs, welche hoffnungslos überlaufen sind. Perfekt für Langschläfer und alle die es werden wollen.";
 ---
 
 <BaseLayout title={title} description={description} showFooter={true}>
@@ -55,7 +54,9 @@ const description =
     <div class="heroLeft">
       <h1>Dein Slot, automatisch gesichert.</h1>
       <p class="sub">
-        SlotBotBuddy unterstützt dich bei der Anmeldung zu Lehrveranstaltungen und Prüfungen, welche hoffnungslos überlaufen sind komplett automatisiert und ohne frühes aufstehen.
+        SlotBotBuddy übernimmt komplett automatisiert die Anmeldung zu LVAs,
+        welche hoffnungslos überlaufen sind. Perfekt für Langschläfer und alle
+        die es werden wollen.
       </p>
 
       <div class="ctaRow">
@@ -120,13 +121,31 @@ const description =
             </div>
 
             <p class="fine">
-              Hinweis: SlotBotBuddy greift nicht auf das System der Universität zu und nutzt nur erlaubte Automatisierungsmechanismen sowie Schnittstellen.
+              Hinweis: SlotBotBuddy greift nicht auf das System der Universität
+              zu und nutzt nur erlaubte Automatisierungsmechanismen sowie
+              Schnittstellen.
             </p>
           </article>
         ))
       }
     </div>
+    <p>
+      Icon made by IconJam from<a
+        href="https://www.flaticon.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        www.flaticon.com
+      </a>
+    </p>
+    <p>
+      Icon made by Freepik from<a
+        href="https://www.flaticon.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        www.flaticon.com
+      </a>
+    </p>
   </section>
 </BaseLayout>
-
-
