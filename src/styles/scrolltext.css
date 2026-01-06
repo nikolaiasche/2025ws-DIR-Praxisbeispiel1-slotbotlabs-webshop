@@ -1,9 +1,9 @@
-.about-page {
+.text-page {
   max-width: 980px;
   margin: 0 auto;
 }
 
-.about-shell {
+.text-shell {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -11,29 +11,32 @@
   overflow: hidden;
 }
 
-.about-scroll {
+.text-scroll {
   max-height: min(70vh, 720px);
   overflow: auto;
   padding: 24px;
   max-width: none;
+
   font-size: 1rem;
   line-height: 1.7;
   color: #e6e8f0;
+
   outline: none;
 }
 
-.about-scroll:focus {
+.text-scroll:focus {
   box-shadow: inset 0 0 0 2px rgba(140, 90, 255, 0.6);
   border-radius: calc(var(--radius) - 2px);
 }
 
-.about-scroll h1 {
+
+.text-scroll h1 {
   font-size: 1.6rem;
   font-weight: 700;
   margin: 0 0 1.4rem 0;
 }
 
-.about-scroll h2 {
+.text-scroll h2 {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 2rem 0 0.6rem 0;
@@ -41,7 +44,7 @@
   border-left: 3px solid #8c5aff;
 }
 
-.about-scroll h2::before {
+.text-scroll h2::before {
   content: "";
   display: block;
   height: 1px;
@@ -49,36 +52,60 @@
   margin: 0 0 0.6rem 0;
 }
 
-.about-scroll h3 {
+.text-scroll h3 {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 1.2rem 0 0.5rem 0;
 }
 
-.about-scroll p,
-.about-scroll ul {
+.text-scroll p,
+.text-scroll ul,
+.text-scroll ol {
   max-width: min(90ch, 100%);
   margin: 0.4rem 0 0.9rem 0;
 }
 
-.about-scroll ul {
-  list-style-type: disc;
-  list-style-position: outside;
+.text-scroll ul,
+.text-scroll ol {
   padding-left: 1.2rem;
 }
 
-.about-scroll ul li {
+.text-scroll ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+
+.text-scroll li {
   margin-bottom: 0.4rem;
 }
 
-.about-scroll a:not(.btn) {
+.text-scroll ul ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-top: 0.4rem;
+  padding-left: 1.4rem;
+}
+
+.text-scroll ul ul,
+.text-scroll ol ol,
+.text-scroll ul ol,
+.text-scroll ol ul {
+  margin: 0.4rem 0 0.8rem 0;
+  padding-left: 1.2rem;
+}
+
+.text-scroll a:not(.btn) {
   color: #b9c2ff;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
-.brand-figure {
+.text-list-number {
+  font-weight: 700;
+}
+
+.text-figure {
   margin: 0.75rem 0 1.25rem 0;
   padding: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -86,7 +113,7 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-.brand-figure img {
+.text-figure img {
   display: block;
   max-width: 520px;
   width: 100%;
@@ -94,7 +121,7 @@
   border-radius: 12px;
 }
 
-.brand-caption {
+.text-caption {
   margin: 0.6rem 0 0 0;
   font-size: 0.92rem;
   opacity: 0.85;

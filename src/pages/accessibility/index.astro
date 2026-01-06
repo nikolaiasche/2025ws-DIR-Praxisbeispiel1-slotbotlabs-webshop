@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/accessibility.css";
+import "../../styles/scrolltext.css";
 
 const title = "Barrierefreiheitserklärung | SlotBotBuddy";
 const description =
@@ -8,13 +8,14 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="a11y-page" aria-labelledby="page-title">
+  <article class="text-page" aria-labelledby="page-title">
     <section
-      class="a11y-shell"
+      class="text-shell"
       aria-label="Barrierefreiheitserklärung (scrollbarer Bereich)"
     >
-      <div class="a11y-scroll" tabindex="0">
-        <h1 id="page-title">Erklärung zur Barrierefreiheit</h1>
+      <div class="text-scroll" tabindex="0">
+        <h1 id="page-title">Barrierefreiheitserklärung</h1>
+        <h2>Erklärung zur Barrierefreiheit</h2>
         <p>
           Die Slot Bot Labs GmbH ist bemüht, seinen Webshop und die darauf
           angebotenen Applikationen, unter anderem die Browser-Extension und die
