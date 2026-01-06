@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import CookieBanner from "../components/CookieBanner.astro";
 import { withBase } from "../utils/utils.ts";
+import "../utils/cookies.ts";
 const {
   title = "SlotBotBuddy",
   description = "SlotBotBuddy hilft Studierenden bei zeitkritischen Anmeldungen zu Lehrveranstaltungen und Prüfungen.",
@@ -80,13 +81,6 @@ function isActive(href: string) {
                 </a>
               ))
             }
-            <a
-              class="btn primary"
-              href={withBase("/checkout")}
-              data-plan="premium"
-            >
-              Premium starten
-            </a>
           </nav>
         </div>
       </div>
@@ -138,6 +132,5 @@ function isActive(href: string) {
 </html>
 <script>
   import { initCookieClient } from "../utils/cookies.ts";
-  import "../utils/checkout.ts"
   initCookieClient();
 </script>
