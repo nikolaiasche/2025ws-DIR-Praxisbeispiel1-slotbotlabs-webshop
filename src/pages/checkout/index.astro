@@ -69,10 +69,10 @@ const checkoutConfigJson = JSON.stringify({ vatRate: VAT_RATE, plans });
   type="application/json"
   set:html={checkoutConfigJson}
 ></script>
-  <script type="module" src={withBase(checkoutScriptSrc)}></script>
+  <script type="module" src={checkoutScriptSrc}></script>
   <div class="checkoutShell">
     <section class="checkoutHeader">
-      <a class="btn" href={withBase("/#abo")} aria-label="Zurück zur Startseite">
+      <a class="btn" href={withBase("/")} aria-label="Zurück zur Startseite">
         ← Zurück
       </a>
 
