@@ -4,9 +4,6 @@ import { withBase } from "../../utils/utils";
 import "../../styles/subscription.css";
 const title = "Abos – SlotBotBuddy";
 const description = "Wähle den passenden Plan für SlotBotBuddy.";
-
-const base = import.meta.env.BASE_URL;
-const asset = (p: string) => `${base}${p}`;
 ---
 
 <BaseLayout title={title} description={description} showFooter={true}>
@@ -17,7 +14,7 @@ const asset = (p: string) => `${base}${p}`;
     <a class="card" href={withBase("/checkout?plan=standard")}>
       <div class="cardHeader">
         <img
-          src={asset("media/images/product/standard_abo_icon.png")}
+          src={withBase("media/images/product/standard_abo_icon.png")}
           alt=""
           class="planIcon"
           aria-hidden="true"
@@ -29,7 +26,7 @@ const asset = (p: string) => `${base}${p}`;
         <p>Die Lösung für Morgenmuffel.</p>
       </div>
       <img
-        src={asset("media/images/product/kaufen_icon.png")}
+        src={withBase("media/images/product/kaufen_icon.png")}
         alt=""
         class="buyIcon"
         aria-hidden="true"
@@ -39,7 +36,7 @@ const asset = (p: string) => `${base}${p}`;
     <a class="card" href={withBase("/checkout?plan=premium")}>
       <div class="cardHeader">
         <img
-          src={asset("media/images/product/premium_abo_icon.png")}
+          src={withBase("media/images/product/premium_abo_icon.png")}
           alt=""
           class="planIcon"
           aria-hidden="true"
@@ -51,7 +48,7 @@ const asset = (p: string) => `${base}${p}`;
         <p>Erhalte den gewünschten Prüfungstermin.</p>
       </div>
       <img
-        src={asset("media/images/product/kaufen_icon.png")}
+        src={withBase("media/images/product/kaufen_icon.png")}
         alt=""
         class="buyIcon"
         aria-hidden="true"
