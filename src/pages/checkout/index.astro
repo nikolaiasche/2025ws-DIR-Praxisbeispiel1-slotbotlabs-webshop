@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/checkout.css";
 import { withBase } from "../../utils/utils";
-import checkoutScriptSrc from "../../utils/checkout.ts?url";
 
 const VAT_RATE = 0.2;
 
@@ -69,7 +68,9 @@ const checkoutConfigJson = JSON.stringify({ vatRate: VAT_RATE, plans });
   type="application/json"
   set:html={checkoutConfigJson}
 ></script>
-  <script type="module" src={checkoutScriptSrc}></script>
+<script type="module">
+  import "../../utils/checkout.ts";
+</script>
   <div class="checkoutShell">
     <section class="checkoutHeader">
       <a class="btn" href={withBase("/")} aria-label="Zurück zur Startseite">
