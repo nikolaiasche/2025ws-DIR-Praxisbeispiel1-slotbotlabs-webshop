@@ -44,7 +44,9 @@ const plans: Record<PlanId, Plan> = {
   },
 };
 
-const selected = plans.standard;
+const planParam = (Astro.url.searchParams.get("plan") ?? "").toLowerCase().trim();
+const planId = planParam === "premium" ? "premium" : "standard";
+const selected = plans[planId];
 const fmt = new Intl.NumberFormat("de-AT", { style: "currency", currency: "EUR" });
 const gross = selected.priceCents / 100;
 const net = Math.round((gross / (1 + VAT_RATE)) * 100) / 100;

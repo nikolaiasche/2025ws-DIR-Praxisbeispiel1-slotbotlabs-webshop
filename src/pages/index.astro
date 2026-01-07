@@ -106,7 +106,7 @@ const description =
             <div class="cardCtas">
               <a
                 class={"btn" + (p.highlight ? " success" : " primary")}
-                href={withBase(p.primaryCta.href)}
+                href={withBase("/checkout/") + "?plan=${p.id}"}
                 data-plan={p.id}
               >
                 {p.primaryCta.label}
