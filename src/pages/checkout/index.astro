@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/checkout.css";
 import { withBase } from "../../utils/utils";
 import checkoutScriptUrl from "../../utils/checkout.ts?url";
+const checkoutScriptSrc = withBase(checkoutScriptUrl);
 
 const VAT_RATE = 0.2;
 
@@ -338,5 +339,5 @@ const description =
     </section>
   </div>
 
-  <script type="module" src={checkoutScriptUrl}></script>
+  <script type="module" src={checkoutScriptSrc}></script>
 </BaseLayout>
